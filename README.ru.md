@@ -1,4 +1,4 @@
-# Mira — личный ИИ-ассистент в Telegram
+# Mira \ tg-business-sorter — личный ИИ-ассистент в Telegram
 
 [English version](README.md)
 
