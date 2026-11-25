@@ -1,0 +1,26 @@
+[Unit]
+Description=Telegram Business Sorter Bot
+After=network.target
+# Crash-loop guard: if it fails 5 times within 5 min, stop trying (uptime_check alerts)
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=tgsorter
+WorkingDirectory=/opt/tg-business-sorter
+Environment="PATH=/opt/tg-business-sorter/venv/bin"
+Environment="HOME=/opt/tg-business-sorter"
+Environment="HF_HOME=/opt/tg-business-sorter/.cache/huggingface"
+Environment="XDG_CACHE_HOME=/opt/tg-business-sorter/.cache"
+ExecStart=/opt/tg-business-sorter/venv/bin/python main.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+MemoryMax=2G
+MemoryHigh=1700M
+
+[Install]
+WantedBy=multi-user.target
